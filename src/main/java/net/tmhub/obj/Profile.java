@@ -57,5 +57,60 @@ public class Profile implements Serializable {
 	public String toString() {
 		return "net.tmhub.obj.Profile[ id=" + id + " ]";
 	}
-	
+
+	/**
+	 * @return the login
+	 */
+	public String getLogin() {
+		return login;
+	}
+
+	/**
+	 * @param login the login to set
+	 */
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @return the sessions
+	 */
+	public List<Session> getSessions() {
+		return sessions;
+	}
+
+	/**
+	 * @param sessions the sessions to set
+	 */
+	public void setSessions(List<Session> sessions) {
+		this.sessions = sessions;
+	}
 }
