@@ -23,7 +23,25 @@ public class Control {
 		return new Pack();
 	}
 
+	public class Ok {
+
+		String msg = "Ok";	
+	
+		@JsonProperty
+		public String getMsg() {
+			return msg;
+		}
+
+		long id = 1;
+
+		@JsonProperty
+		public long getId() {
+			return id;
+		} 
+	}
+
 	public class Pack {
+
 		String foo;
 
 		@JsonProperty
