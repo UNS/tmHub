@@ -16,6 +16,9 @@ public class Profile implements Serializable {
 	@Id
         @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	private String login;
+	private String email;
+	private String name;
 
 	public Long getId() {
 		return id;
