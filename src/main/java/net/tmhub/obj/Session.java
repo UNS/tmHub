@@ -1,29 +1,24 @@
 package net.tmhub.obj;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author remal
  */
 @Entity
-public class Profile implements Serializable {
+public class Session implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
         @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String login;
-	private String email;
-	private String name;
-
-	@OneToMany(mappedBy = "p")
-	private List<Session> sessions;
+	@ManyToOne
+	private Profile p; 
 
 	public Long getId() {
 		return id;
@@ -43,10 +38,10 @@ public class Profile implements Serializable {
 	@Override
 	public boolean equals(Object object) {
 		// TODO: Warning - this method won't work in the case the id fields are not set
-		if (!(object instanceof Profile)) {
+		if (!(object instanceof Session)) {
 			return false;
 		}
-		Profile other = (Profile) object;
+		Session other = (Session) object;
 		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
 			return false;
 		}
@@ -55,7 +50,21 @@ public class Profile implements Serializable {
 
 	@Override
 	public String toString() {
-		return "net.tmhub.obj.Profile[ id=" + id + " ]";
+		return "net.tmhub.obj.Session[ id=" + id + " ]";
+	}
+
+	/**
+	 * @return the p
+	 */
+	public Profile getP() {
+		return p;
+	}
+
+	/**
+	 * @param p the p to set
+	 */
+	public void setP(Profile p) {
+		this.p = p;
 	}
 	
 }
