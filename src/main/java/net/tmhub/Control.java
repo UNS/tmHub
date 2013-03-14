@@ -31,7 +31,7 @@ public class Control {
 			rep.saveMe();
 			return rep.helloWorld();
 		}
-		String bar = "Hi";
+		String bar = null;
 
 		@JsonProperty
 		public String bar() {
