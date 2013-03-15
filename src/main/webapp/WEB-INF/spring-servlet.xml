@@ -34,7 +34,11 @@
 		<property name="dataSource" ref="dataSource"/>
 		<property name="annotatedClasses">
 			<list>
-				<value>net.tmhub.Hi</value>
+				<value>net.tmhub.obj.Profile</value>
+				<value>net.tmhub.obj.TM</value>
+				<value>net.tmhub.obj.Session</value>
+				<value>net.tmhub.obj.Prog</value>
+				<value>net.tmhub.obj.State</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

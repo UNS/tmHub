@@ -33,7 +33,7 @@ public class HibRepa implements Repa {
 		Profile p =	(Profile)sf.
 			getCurrentSession().
 			createCriteria(Profile.class).
-			add(Restrictions.eq("userName", userName)).
+			add(Restrictions.eq("login", userName)).
 			uniqueResult();
 		if (p == null) {
 			p = new Profile();
