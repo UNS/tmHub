@@ -20,6 +20,8 @@
 
 	<context:component-scan base-package="net.tmhub" />
 	<mvc:annotation-driven/>
+	<mvc:default-servlet-handler/>
+	<mvc:resources mapping="/" location="/static/*"/>
 	<tx:annotation-driven/>
 
 	<bean id="dataSource"

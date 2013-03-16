@@ -20,7 +20,7 @@ public class Control {
 	@Autowired
 	Repa rep;
 
-	@RequestMapping(value = "/{user}", method = RequestMethod.POST) 
+	@RequestMapping(value = "/{user}/", method = RequestMethod.POST) 
 	@ResponseBody
 	public Profile createProfile(@PathVariable("user") String user, @ModelAttribute("Profile") Profile p) {
 		p.setName(user);
@@ -28,13 +28,13 @@ public class Control {
 		return p;
 	}
 	
-	@RequestMapping(value = "/{user}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{user}/", method = RequestMethod.GET)
 	@ResponseBody
 	public Profile getProfile(@PathVariable("user") String user) {
 		return rep.getProfile(user);
 	}
 
-	@RequestMapping(value = "/{user}/{tm}/prog", method = RequestMethod.GET)
+	@RequestMapping(value = "/{user}/{tm}/state", method = RequestMethod.GET)
 	@ResponseBody
 	public Profile handler(@PathVariable("user") String user, @PathVariable("tm") String tm) {
 //		return new Ok(user + "|" + tm);
