@@ -1,8 +1,6 @@
 package net.tmhub;
 
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-import net.tmhub.obj.Profile;
 import net.tmhub.obj.State;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
