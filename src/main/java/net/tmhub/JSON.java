@@ -14,9 +14,11 @@ public class JSON extends ObjectMapper {
 	JSON() {
 		super();
 		this.configure(DeserializationFeature.UNWRAP_ROOT_VALUE,
-			true);
+			false);
 		this.configure(SerializationFeature.WRAP_ROOT_VALUE,
-			true);
-		this.setSerializationInclusion(Include.NON_NULL);
+			false);
+		this.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS,
+			false);
+		//this.setSerializationInclusion(Include.NON_NULL);
 	}
 }

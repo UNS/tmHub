@@ -1,5 +1,6 @@
 package net.tmhub.obj;
 
+import com.fasterxml.jackson.annotation.*;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
@@ -7,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 /**
  *
@@ -21,9 +23,6 @@ public class Profile implements Serializable {
 	private String login;
 	private String email;
 	private String name;
-
-	@OneToMany(mappedBy = "p")
-	private List<Session> sessions;
 
 	public Long getId() {
 		return id;
@@ -51,11 +50,6 @@ public class Profile implements Serializable {
 			return false;
 		}
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "net.tmhub.obj.Profile[ id=" + id + " ]";
 	}
 
 	/**
@@ -100,17 +94,8 @@ public class Profile implements Serializable {
 		this.name = name;
 	}
 
-	/**
-	 * @return the sessions
-	 */
-	public List<Session> getSessions() {
-		return sessions;
-	}
-
-	/**
-	 * @param sessions the sessions to set
-	 */
-	public void setSessions(List<Session> sessions) {
-		this.sessions = sessions;
+	@Override
+	public String toString() {
+		return String.format("Profile [%d %s %s %s]", id, login, email, name);
 	}
 }
