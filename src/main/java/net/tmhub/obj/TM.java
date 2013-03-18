@@ -23,6 +23,9 @@ public class TM implements Serializable {
 	private Long id;
 	private String description;
 
+	@ManyToOne
+	private Profile owner;
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Problem problem;
 
