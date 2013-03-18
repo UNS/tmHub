@@ -4,7 +4,7 @@
 
 	<groupId>net.tmHub</groupId>
 	<artifactId>tmHub</artifactId>
-	<version>0.3-DEV</version>
+	<version>0.4-DEV</version>
 	<packaging>war</packaging>
 
 	<name>tmHub</name>
