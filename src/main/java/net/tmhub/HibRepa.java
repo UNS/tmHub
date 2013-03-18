@@ -28,7 +28,6 @@ public class HibRepa implements Repa {
 		this.sf = sf;
 	}
 
-	@Override
 	@Transactional
 	public Profile getProfile(String userName) {
 		log.info("getProfile" + userName);
@@ -44,7 +43,6 @@ public class HibRepa implements Repa {
 		return p;
 	}
 
-	@Override
 	@Transactional
 	public Profile getProfile(long id) {
 		Session ses = sf.getCurrentSession();
@@ -54,41 +52,37 @@ public class HibRepa implements Repa {
 		return p;
 	}
 
-	@Override
 	@Transactional
 	public void saveProfile(Profile profile) {
 		sf.getCurrentSession().save(profile);
 		log.info("saved profile id={}", profile.toString());
 	}
 
-	@Override
 	@Transactional
 	public void updateProfile(Profile p) {
 		sf.getCurrentSession().update(p);
 		log.info("updated profile id={}", p.toString());
 	}
 
-	@Override
 	@Transactional
 	public void deleteProfile(Profile p) {
 		sf.getCurrentSession().delete(p);
 		log.info("deleted profile={}", p.toString());
 	}
 
-	@Override
 	@Transactional
 	public List<Profile> getProfiles() {
 		List<Profile> result = (List<Profile>) sf.getCurrentSession().createCriteria(Profile.class).list();
 		return result;
 	}
 
-	@Override
+	@Transactional
 	public void saveState(State state) {
 		sf.getCurrentSession().save(state);
 		log.info("saved state id={}", state.toString());
 	}
 
-	@Override
+	@Transactional
 	public State getState(long id) {
 		Session ses = sf.getCurrentSession();
 		State state = new State();
@@ -97,31 +91,31 @@ public class HibRepa implements Repa {
 		return state;
 	}
 
-	@Override
+	@Transactional
 	public List<State> getState() {
 		List<State> list = (List<State>) sf.getCurrentSession().createCriteria(State.class).list();
 		return list;
 	}
 
-	@Override
+	@Transactional
 	public void updateState(State state) {
 		sf.getCurrentSession().update(state);
 		log.info("updated state id={}", state.toString());
 	}
 
-	@Override
+	@Transactional
 	public void deleteState(State s) {
 		sf.getCurrentSession().delete(s);
 		log.info("deleted state={}", s.toString());
 	}
 
-	@Override
+	@Transactional
 	public void saveTM(TM tm) {
 		sf.getCurrentSession().save(tm);
 		log.info("saved tm id={}", tm.toString());
 	}
 
-	@Override
+	@Transactional
 	public TM getTM(long id) {
 		Session ses = sf.getCurrentSession();
 		TM tm = new TM();
@@ -130,19 +124,19 @@ public class HibRepa implements Repa {
 		return tm;
 	}
 
-	@Override
+	@Transactional
 	public List<TM> getTM() {
 		List<TM> list = (List<TM>) sf.getCurrentSession().createCriteria(TM.class).list();
 		return list;
 	}
 
-	@Override
+	@Transactional
 	public void updateTM(TM tm) {
 		sf.getCurrentSession().update(tm);
 		log.info("updated tm id={}", tm.toString());
 	}
 
-	@Override
+	@Transactional
 	public void deleteTM(TM tm) {
 		sf.getCurrentSession().delete(tm);
 		log.info("deleted tm={}", tm.toString());

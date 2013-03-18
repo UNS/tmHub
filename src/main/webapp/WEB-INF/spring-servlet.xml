@@ -47,7 +47,7 @@
 				<value>net.tmhub.obj.Profile</value>
 				<value>net.tmhub.obj.TM</value>
 				<value>net.tmhub.obj.Session</value>
-				<value>net.tmhub.obj.Prog</value>
+				<value>net.tmhub.obj.Problem</value>
 				<value>net.tmhub.obj.State</value>
 			</list>
 		</property>
