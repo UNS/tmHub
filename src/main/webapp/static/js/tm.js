@@ -1,8 +1,8 @@
 $(document).ready(function() {
 	'use strict';
-	var tm = {};
+	var o = {};
 
-	tm.profile = Backbone.Model.extend({
+	o.profile = Backbone.Model.extend({
 		defaults: {
 			name: 'nikolay',
 			email: 'mail@mail.com'
@@ -10,16 +10,19 @@ $(document).ready(function() {
 		urlRoot: '/tmhub/profiles' 
 	});
 
-	var p = new tm.profile({login: 'remal'});
-	console.log(JSON.stringify(p));
-	p.save();
-	var p2 = new tm.profile({id: p.get('id')});
-	p2.fetch();
-	console.log(JSON.stringify(p2));
-	p2.set({name: 'vasya'});
-	p2.save();
+	o.tm = Backbone.Model.extend({urlRoot: '/tmhub/tms'});
+	o.state = Backbone.Model.extend({urlRoot: '/tmhub/states'});
+	
+	var profile = new o.profile({login: 'remal'});
+	console.log(JSON.stringify(profile));
+	profile.save();
+		
+	var tm = new o.tm({owner: profile.get('id')});
+	console.log(JSON.stringify(tm));
+	tm.save();
 
-	var p3 = new tm.profile({id: p2.get('id')});
-	p3.fetch();
-	console.log(JSON.stringify(p3));
+	var state = new o.state({tm: tm.get('id')});
+	state.set({nextState: 2});	
+	state.save();
+	console.log(JSON.stringify(state));
 });
