@@ -2,6 +2,8 @@ package net.tmhub;
 
 import java.util.List;
 import net.tmhub.obj.Profile;
+import net.tmhub.obj.State;
+import net.tmhub.obj.TM;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,7 +21,6 @@ import org.slf4j.LoggerFactory;
 public class HibRepa implements Repa {
 
 	private SessionFactory sf;
-	
 	final private Logger log = LoggerFactory.getLogger(Repa.class);
 
 	@Autowired
@@ -31,7 +32,7 @@ public class HibRepa implements Repa {
 	@Transactional
 	public Profile getProfile(String userName) {
 		log.info("getProfile" + userName);
-		Profile p =	(Profile)sf.
+		Profile p = (Profile) sf.
 			getCurrentSession().
 			createCriteria(Profile.class).
 			add(Restrictions.eq("login", userName)).
@@ -49,7 +50,6 @@ public class HibRepa implements Repa {
 		Session ses = sf.getCurrentSession();
 		Profile p = new Profile();
 		ses.load(p, id);
-//		ses.evict(p); 
 		log.info("loaded by id={}", p.toString());
 		return p;
 	}
@@ -80,5 +80,71 @@ public class HibRepa implements Repa {
 	public List<Profile> getProfiles() {
 		List<Profile> result = (List<Profile>) sf.getCurrentSession().createCriteria(Profile.class).list();
 		return result;
+	}
+
+	@Override
+	public void saveState(State state) {
+		sf.getCurrentSession().save(state);
+		log.info("saved state id={}", state.toString());
+	}
+
+	@Override
+	public State getState(long id) {
+		Session ses = sf.getCurrentSession();
+		State state = new State();
+		ses.load(state, id);
+		log.info("loaded state by id={}", state.toString());
+		return state;
+	}
+
+	@Override
+	public List<State> getState() {
+		List<State> list = (List<State>) sf.getCurrentSession().createCriteria(State.class).list();
+		return list;
+	}
+
+	@Override
+	public void updateState(State state) {
+		sf.getCurrentSession().update(state);
+		log.info("updated state id={}", state.toString());
+	}
+
+	@Override
+	public void deleteState(State s) {
+		sf.getCurrentSession().delete(s);
+		log.info("deleted state={}", s.toString());
+	}
+
+	@Override
+	public void saveTM(TM tm) {
+		sf.getCurrentSession().save(tm);
+		log.info("saved tm id={}", tm.toString());
+	}
+
+	@Override
+	public TM getTM(long id) {
+		Session ses = sf.getCurrentSession();
+		TM tm = new TM();
+		ses.load(tm, id);
+		log.info("loaded tm by id={}", tm.toString());
+		return tm;
+	}
+
+	@Override
+	public List<TM> getTM() {
+		List<TM> list = (List<TM>) sf.getCurrentSession().createCriteria(TM.class).list();
+		return list;
+	}
+
+	@Override
+	public void updateTM(TM tm) {
+		sf.getCurrentSession().update(tm);
+		log.info("updated tm id={}", tm.toString());
+	}
+
+	@Override
+	public void deleteTM(TM tm) {
+		sf.getCurrentSession().delete(tm);
+		log.info("deleted tm={}", tm.toString());
 	}
 }
