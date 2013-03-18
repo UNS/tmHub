@@ -7,6 +7,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -21,9 +22,8 @@ public class TM implements Serializable {
 	private Long id;
 	private String description;
 	
-	@OneToMany(fetch = FetchType.EAGER)
-	private Set<Prog> pr;
-	
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Problem problem;
 
 	public Long getId() {
 		return id;
