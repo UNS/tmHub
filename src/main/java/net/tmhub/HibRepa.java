@@ -2,6 +2,7 @@ package net.tmhub;
 
 import java.util.List;
 import net.tmhub.obj.Profile;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,7 +46,10 @@ public class HibRepa implements Repa {
 	@Override
 	@Transactional
 	public Profile getProfile(long id) {
-		Profile p = (Profile)sf.getCurrentSession().load(Profile.class, id);
+		Session ses = sf.getCurrentSession();
+		Profile p = new Profile();
+		ses.load(p, id);
+//		ses.evict(p); 
 		log.info("loaded by id={}", p.toString());
 		return p;
 	}
