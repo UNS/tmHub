@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /**
  *
@@ -16,12 +15,14 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class TM implements Serializable {
+
 	private static final long serialVersionUID = 1L;
+
 	@Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String description;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Problem problem;
 
@@ -40,7 +41,6 @@ public class TM implements Serializable {
 	public void setProblem(Problem p) {
 		this.problem = p;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -66,5 +66,4 @@ public class TM implements Serializable {
 	public String toString() {
 		return "net.tmhub.obj.TM[ id=" + id + " ]";
 	}
-	
 }

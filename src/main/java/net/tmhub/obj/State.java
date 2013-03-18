@@ -22,5 +22,5 @@ public class State {
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	private Prog prog;
+	private TM tm;
 }
