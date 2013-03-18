@@ -13,5 +13,15 @@ public interface Repa {
 	public void deleteProfile(Profile p);
 
 	public List<Profile> getProfiles();
+
+	public void saveState(State p);
+
+	public State getState(long id);
+
+	public List<State> getState();
+
+	public void updateState(State s);
+
+	public void deleteState(State s);
 }
 
