@@ -33,6 +33,15 @@ public class TM implements Serializable {
 		this.id = id;
 	}
 
+	public Problem getProblem() {
+		return problem;
+	}
+
+	public void setProblem(Problem p) {
+		this.problem = p;
+	}
+
+
 	@Override
 	public int hashCode() {
 		int hash = 0;
