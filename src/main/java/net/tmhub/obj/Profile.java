@@ -16,6 +16,8 @@ import javax.persistence.*;
  */
 @Entity
 public class Profile implements Serializable {
+	@OneToMany(mappedBy = "owner")
+	private List<TM> tms;
 	private static final long serialVersionUID = 1L;
 	@Id
         @GeneratedValue(strategy = GenerationType.AUTO)

@@ -16,7 +16,21 @@ import javax.persistence.ManyToOne;
 @Entity
 public class TM implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static long serialVersionUID = 1L;
+
+	/**
+	 * @return the serialVersionUID
+	 */
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+	/**
+	 * @param aSerialVersionUID the serialVersionUID to set
+	 */
+	public static void setSerialVersionUID(long aSerialVersionUID) {
+		serialVersionUID = aSerialVersionUID;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -48,7 +62,7 @@ public class TM implements Serializable {
 	@Override
 	public int hashCode() {
 		int hash = 0;
-		hash += (id != null ? id.hashCode() : 0);
+		hash += (getId() != null ? getId().hashCode() : 0);
 		return hash;
 	}
 
@@ -59,7 +73,7 @@ public class TM implements Serializable {
 			return false;
 		}
 		TM other = (TM) object;
-		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+		if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.id.equals(other.id))) {
 			return false;
 		}
 		return true;
@@ -67,6 +81,34 @@ public class TM implements Serializable {
 
 	@Override
 	public String toString() {
-		return "net.tmhub.obj.TM[ id=" + id + " ]";
+		return "net.tmhub.obj.TM[ id=" + getId() + " ]";
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * @return the owner
+	 */
+	public Profile getOwner() {
+		return owner;
+	}
+
+	/**
+	 * @param owner the owner to set
+	 */
+	public void setOwner(Profile owner) {
+		this.owner = owner;
 	}
 }
