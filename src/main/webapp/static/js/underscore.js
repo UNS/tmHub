@@ -639,7 +639,7 @@
 
   // Returns a function, that, when invoked, will only be triggered at most once
   // during a given window of time.
-  _.throttle = function(func, wait, immediate) {
+  _.throttle = function(func, wait) {
     var context, args, timeout, result;
     var previous = 0;
     var later = function() {
@@ -649,7 +649,6 @@
     };
     return function() {
       var now = new Date;
-      if (!previous && immediate === false) previous = now;
       var remaining = wait - (now - previous);
       context = this;
       args = arguments;
